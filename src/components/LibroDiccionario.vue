@@ -1,14 +1,18 @@
 <template>
     <div id="hojas">
         <div id="HojaIzquierda" class="hoja">
-            <v-img src="../assets/DescribeMe_Final.png" id="logo_describeme"/>
+            <img src="../assets/DescribeMe_Final.png" width="65%"/>
             <div id="controles">
+                <v-autocomplete variant="solo" label="Selecciona un diccionario" density="comfortable" :items="diccionarios"></v-autocomplete>
+                <v-textarea variant="solo" label="Ingresa una descripción" density="comfortable"></v-textarea>
+                <v-btn class="buscar d-lg-flex d-md-none" color="primary">Buscar</v-btn>
+                <v-btn class="buscar d-lg-none" size="small" color="primary">Buscar</v-btn>
             </div>
             <v-img src="../assets/gil.jpg" id="logo_gil" />
         </div>
         <div id="HojaDerecha" class="hoja">
-            <h5 id="instrucciones">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h5>
-            <h7 id="instrucciones">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h7>
+            <h5 id="instrucciones" class="text-h5 d-lg-flex d-md-none d-sm-none d-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h5>
+            <h7 id="instrucciones" class="text-h7 d-lg-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h7>
         </div>
         <div id="separador"></div>
         <img src="../assets/Listón.png" alt="liston" id="liston">
@@ -134,7 +138,6 @@ const descripcion = ref(null)
 
 #controles {
     width: 65%;
-    height: 40%;
     display: flex;
     flex-direction: column;
     row-gap: 10%;
@@ -156,7 +159,7 @@ const descripcion = ref(null)
     border-radius: 0px;
 }
 
-#buscar {
+.buscar {
     align-self: flex-end;
 }
 
