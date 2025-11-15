@@ -17,7 +17,7 @@
             </div>
             <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4">
                 <div id="palabraPrincipal" class="d-flex flex-column ga-lg-2 ga-md-0">
-                    <h2 class="text-lg-h2 text-md-h4">{{ resultados[0]?.palabra }}</h2>
+                    <h2 class="text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
                     <h6 class="text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
                 </div>
                 <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1">
