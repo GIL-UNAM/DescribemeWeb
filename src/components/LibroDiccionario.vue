@@ -2,17 +2,23 @@
     <div id="hojas">
         <div id="HojaIzquierda" class="hoja">
             <img src="../assets/DescribeMe_Final.png" width="65%"/>
-            <div id="controles">
-                <v-autocomplete variant="solo" label="Selecciona un diccionario" density="comfortable" :items="diccionarios"></v-autocomplete>
-                <v-textarea variant="solo" label="Ingresa una descripción" density="comfortable"></v-textarea>
-                <v-btn class="buscar d-lg-flex d-md-none" color="primary">Buscar</v-btn>
-                <v-btn class="buscar d-lg-none" size="small" color="primary">Buscar</v-btn>
-            </div>
+            <v-form ref="controlesBusqueda" id="controles">
+                <v-autocomplete variant="solo" label="Selecciona un diccionario" density="comfortable" :items="diccionarios" :rules="rulesSeleccionarDiccionario" clearable></v-autocomplete>
+                <v-textarea variant="solo" label="Ingresa una descripción" density="comfortable":rules="rulesDescripcion" clearable></v-textarea>
+                <v-btn class="buscar d-lg-flex d-md-none" color="primary" @click="fetchResults" rounded>Buscar</v-btn>
+                <v-btn class="buscar d-lg-none" size="small" color="primary" @click="fetchResults" rounded>Buscar</v-btn>
+            </v-form>
             <v-img src="../assets/gil.jpg" id="logo_gil" />
         </div>
         <div id="HojaDerecha" class="hoja">
-            <h5 id="instrucciones" class="text-h5 d-lg-flex d-md-none d-sm-none d-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h5>
-            <h7 id="instrucciones" class="text-h7 d-lg-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h7>
+            <div v-if="fetching">
+                <v-progress-circular color="primary" class="d-lg-flex d-md-none d-sm-none d-none" indeterminate size="50"></v-progress-circular>
+                <v-progress-circular class="d-lg-none" color="primary" indeterminate size="40"></v-progress-circular>
+            </div>
+            <div id="instrucciones" v-else>
+                <h5 class="text-h5 d-lg-flex d-md-none d-sm-none d-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h5>
+                <h7 class="text-h7 d-lg-none">Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.</h7>
+            </div>
         </div>
         <div id="separador"></div>
         <img src="../assets/Listón.png" alt="liston" id="liston">
@@ -26,9 +32,30 @@ const diccionarios = [
     'Diccionario de sexualidad mexicana', 
     'Diccionario de animales',
     'Diccionario de leyes mexicanas'
-]
-const diccionarioSeleccionado = ref(null)
-const descripcion = ref(null)
+];
+
+const diccionarioSeleccionado = ref(null);
+const descripcion = ref(null);
+const fetching = ref(false);
+
+const controlesBusqueda = ref()
+
+const rulesSeleccionarDiccionario = ref([
+    (value: string) => !!value || "Debes seleccionar un diccionario"
+])
+
+const rulesDescripcion = ref([
+    (value: string) => (!!value || value == ' ') || "Debes ingresar una descripción"
+])
+
+async function fetchResults() {
+    const { valid } = await controlesBusqueda.value.validate();
+
+    if (valid) {
+        fetching.value = true;
+        setTimeout(() => fetching.value = false, 3000);
+    }
+}
 
 </script>
 <style>
