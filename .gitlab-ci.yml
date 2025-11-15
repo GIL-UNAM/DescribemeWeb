@@ -1,11 +1,13 @@
 # The Docker image that will be used to build your app
 image: node:lts
 # Functions that should be executed before the build script is run
-before_script:
-  - npm ci
+
 pages:
+  before_script:
+    - npm install -g pnpm
   script:
-    - npm run build
+    - pnpm install --frozen-lockfile
+    - pnpm run build
     - cp -r dist/* public/
     - ls -R public/
   artifacts:
