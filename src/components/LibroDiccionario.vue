@@ -3,10 +3,10 @@
         <div id="HojaIzquierda" class="hoja">
             <img src="../assets/DescribeMe_Final.png" width="65%"/>
             <v-form ref="controlesBusqueda" id="controles">
-                <v-autocomplete variant="solo" label="Selecciona un diccionario" density="comfortable" :items="diccionarios" :rules="rulesSeleccionarDiccionario" clearable></v-autocomplete>
+                <v-autocomplete variant="solo" label="Selecciona un diccionario" density="comfortable" :items="APIStore.listaDeDiccionarios" :rules="rulesSeleccionarDiccionario" clearable></v-autocomplete>
                 <v-textarea variant="solo" label="Ingresa una descripción" density="comfortable":rules="rulesDescripcion" clearable></v-textarea>
-                <v-btn class="buscar d-xl-flex d-lg-none d-md-none d-sm-none d-none" color="primary" @click="fetchResults" rounded>Buscar</v-btn>
-                <v-btn class="buscar d-xl-none" size="small" color="primary" @click="fetchResults" rounded>Buscar</v-btn>
+                <v-btn class="buscar d-xl-flex d-lg-none d-md-none d-sm-none d-none" color="primary" @click="validateForm" rounded>Buscar</v-btn>
+                <v-btn class="buscar d-xl-none" size="small" color="primary" @click="validateForm" rounded>Buscar</v-btn>
             </v-form>
             <v-img src="../assets/gil.jpg" id="logo_gil" />
         </div>
@@ -24,7 +24,7 @@
                     <h6 class="text-lg-h6 text-md-subtitle-2 text-grey-darken-1">Otras opciones: </h6>
                     <v-container id="palabrasRestantes">
                         <v-row>
-                            <v-col v-for="resultado in palabrasRestantes" lg="4" md="6">
+                            <v-col v-for="resultado in APIStore.palabrasRestantes" lg="4" md="6">
                                 <v-chip color="primary" variant="elevated" size="small" class="d-xl-none">{{ resultado.palabra }}</v-chip>
                                 <v-chip color="primary" variant="elevated" class="d-xl-inline-flex d-lg-none d-md-none d-sm-none d-none">{{ resultado.palabra }}</v-chip>
                             </v-col>
@@ -42,26 +42,22 @@
     <div id="fondo"></div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { ref } from 'vue';
+import { useAPIStore } from '@/stores/APIStore';
+import { storeToRefs } from 'pinia';
+import { useUIStore } from '@/stores/UIStore';
 
-type Resultado = {
-    palabra: string,
-    score: number
-} 
+const APIStore = useAPIStore();
+const UIStore = useUIStore();
 
-const diccionarios = [
-    'Diccionario de sexualidad mexicana', 
-    'Diccionario de animales',
-    'Diccionario de leyes mexicanas'
-];
+const { resultados, fetching } = storeToRefs(APIStore);
 
-const diccionarioSeleccionado = ref(null);
-const descripcion = ref(null);
-const fetching = ref(false);
+APIStore.getDictionaries();
+
+const diccionarioSeleccionado = ref<null | string>(null);
+const descripcion = ref<null | string>(null);
 
 const controlesBusqueda = ref()
-
-const resultados = ref<Resultado[] | null>(null) 
 
 const rulesSeleccionarDiccionario = ref([
     (value: string) => !!value || "Debes seleccionar un diccionario"
@@ -71,34 +67,13 @@ const rulesDescripcion = ref([
     (value: string) => (!!value || value == ' ') || "Debes ingresar una descripción"
 ])
 
-async function fetchResults() {
+async function validateForm() {
     const { valid } = await controlesBusqueda.value.validate();
 
     if (valid) {
-        resultados.value = [];
-        fetching.value = true;
-        setTimeout(() => {
-            fetching.value = false
-            resultados.value = [
-                {palabra: "Araña", score: 0.85},
-                {palabra: "Pulpo", score: 0.78},
-                {palabra: "Calamar", score: 0.75},
-                {palabra: "Arácnido", score: 0.65},
-                {palabra: "Tarántula", score: 0.58},
-                {palabra: "Micróptero", score: 0.55},
-                {palabra: "Crustáceo", score: 0.49},
-                {palabra: "Insecto", score: 0.40},
-                {palabra: "Nautilo", score: 0.37},
-                {palabra: "Calíptero", score: 0.23}, 
-            ];
-        }, 3000);
+        APIStore.getResults(diccionarioSeleccionado.value as string, descripcion.value as string)
     }
 }
-
-const palabrasRestantes = computed(() => resultados.value?.slice(1))
-
-console.log(palabrasRestantes);
-
 
 </script>
 <style>
@@ -210,7 +185,6 @@ console.log(palabrasRestantes);
     width: 65%;
     display: flex;
     flex-direction: column;
-    row-gap: 10%;
 }
 
 
