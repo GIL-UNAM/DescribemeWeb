@@ -7,6 +7,7 @@
             :items="APIStore.listaDeDiccionarios" 
             :rules="rulesSeleccionarDiccionario" 
             clearable
+            v-model="diccionarioSeleccionado"
         ></v-autocomplete>
         <v-textarea 
             variant="solo" 
@@ -14,6 +15,7 @@
             density="comfortable"
             :rules="rulesDescripcion" 
             clearable
+            v-model="descripcion"
         ></v-textarea>
         <v-btn 
             class="buscar d-xl-flex d-lg-none d-md-none d-sm-none d-none" 
@@ -42,7 +44,7 @@ onMounted(() => APIStore.getDictionaries());
 const diccionarioSeleccionado = ref<null | string>(null);
 const descripcion = ref<null | string>(null);
 
-const controlesBusqueda = ref()
+const controlesBusqueda = ref() // typear esto
 
 const rulesSeleccionarDiccionario = ref([
     (value: string) => !!value || "Debes seleccionar un diccionario"

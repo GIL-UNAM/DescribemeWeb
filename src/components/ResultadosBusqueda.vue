@@ -43,7 +43,15 @@
             </v-container>
         </div>
     </div>
-    <div id="instrucciones" v-else>
+    <div v-else-if="errorBusqueda" class="texto">
+        <h5 class="text-lg-h5 text-md-subtitle-2 text-error">
+            Lo sentimos, la búsqueda no arrojó ningún resultado:
+            <br>
+            <br>
+            {{ errorBusqueda }}
+        </h5>
+    </div>
+    <div id="instrucciones" class="texto" v-else>
         <h5 class="text-lg-h5 text-md-subtitle-2">
             Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.
         </h5>
@@ -57,12 +65,12 @@ import { storeToRefs } from 'pinia';
 
 const APIStore = useAPIStore();
 
-const { fetching, resultados } = storeToRefs(APIStore);
+const { fetching, resultados, errorBusqueda } = storeToRefs(APIStore);
 
 </script>
 
 <style>
-#instrucciones {
+.texto {
     width: 65%;
     text-align: center;
 }

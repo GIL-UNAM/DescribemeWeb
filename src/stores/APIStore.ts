@@ -20,7 +20,8 @@ export const useAPIStore = defineStore("APIStore", {
     state: () => ({
         diccionarios: [] as Diccionario[],
         resultados: null as Resultado[] | null,
-        fetching: false as boolean
+        fetching: false as boolean,
+        errorBusqueda: '' as string
     }),
     getters: {
         palabrasRestantes(state) {
@@ -49,23 +50,26 @@ export const useAPIStore = defineStore("APIStore", {
             this.resultados = response.resultados
             
             if (response.error) {
-                console.error(response.error)
-            }*/
+                this.errorBusqueda = response.error;
+            }*/            
 
             setTimeout(() => {
-                this.resultados = [
-                    {palabra: "Araña", score: 0.85},
-                    {palabra: "Pulpo", score: 0.78},
-                    {palabra: "Calamar", score: 0.75},
-                    {palabra: "Arácnido", score: 0.65},
-                    {palabra: "Tarántula", score: 0.58},
-                    {palabra: "Micróptero", score: 0.55},
-                    {palabra: "Crustáceo", score: 0.49},
-                    {palabra: "Insecto", score: 0.40},
-                    {palabra: "Nautilo", score: 0.37},
-                    {palabra: "Calíptero", score: 0.23}, 
-                ]
-
+                if (descripcion == "error") {
+                    this.errorBusqueda = "No hubo coincidencias con el término";
+                } else {
+                    this.resultados = [
+                        {palabra: "Araña", score: 0.85},
+                        {palabra: "Pulpo", score: 0.78},
+                        {palabra: "Calamar", score: 0.75},
+                        {palabra: "Arácnido", score: 0.65},
+                        {palabra: "Tarántula", score: 0.58},
+                        {palabra: "Micróptero", score: 0.55},
+                        {palabra: "Crustáceo", score: 0.49},
+                        {palabra: "Insecto", score: 0.40},
+                        {palabra: "Nautilo", score: 0.37},
+                        {palabra: "Calíptero", score: 0.23}, 
+                    ]
+                }
                 this.fetching = false;
             }, 3000);
 
