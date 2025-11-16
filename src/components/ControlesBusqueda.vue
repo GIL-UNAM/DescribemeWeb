@@ -32,12 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useAPIStore } from '@/stores/APIStore';
 
 const APIStore = useAPIStore();
 
-APIStore.getDictionaries();
+onMounted(() => APIStore.getDictionaries());
 
 const diccionarioSeleccionado = ref<null | string>(null);
 const descripcion = ref<null | string>(null);
