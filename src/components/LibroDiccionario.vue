@@ -14,12 +14,8 @@
     <div id="fondo"></div>
 </template>
 <script setup lang="ts">
-import { useUIStore } from '@/stores/UIStore';
 import ControlesBusqueda from './ControlesBusqueda.vue';
 import ResultadosBusqueda from './ResultadosBusqueda.vue';
-
-const UIStore = useUIStore();
-
 </script>
 <style>
 #hojas {
