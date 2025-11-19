@@ -52,15 +52,17 @@ onMounted(() => {
 })
 </script>
 <style>
+/*calc(var(--vh) * 100) */
+
 html, body, #v-app{
-  height: calc(var(--vh) * 100);
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
 
 #desktop {
     width: 100vw;
-    height: calc(var(--vh) * 100);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,12 +71,12 @@ html, body, #v-app{
 
 #mobile {
   width: 100vw;
-  height: calc(var(--vh) * 100);
+  height: 100vh;
 }
 
 #background {
     width: 100vw;
-    height: calc(var(--vh) * 100);
+    height: 100vh;
     position: absolute;
     background-image: url(./assets/Fondo_Web.png);
     opacity: 0.02;
