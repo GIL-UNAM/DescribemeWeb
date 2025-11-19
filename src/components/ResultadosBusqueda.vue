@@ -16,7 +16,7 @@
     <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4 ga-10">
         <div id="palabraPrincipal" class="d-flex flex-column ga-2 ga-lg-2 ga-md-0">
             <h2 class="text-h3 text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
-            <h6 class="text-subtitle-1 text-sm-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
+            <h6 class="text-subtitle-1 text-sm-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Concordancia: {{ resultados[0]!.score * 100 }}%</h6>
         </div>
         <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1 ga-4">
             <h6 class="text-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Otras opciones: </h6>
@@ -67,6 +67,7 @@
 
 import { useAPIStore } from '@/stores/APIStore';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 const APIStore = useAPIStore();
 
