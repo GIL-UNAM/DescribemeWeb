@@ -55,7 +55,7 @@ onMounted(() => {
 /*calc(var(--vh) * 100) */
 
 html, body, #v-app{
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
 }
@@ -70,8 +70,8 @@ html, body, #v-app{
 }
 
 #mobile {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100dvh;
 }
 
 #background {

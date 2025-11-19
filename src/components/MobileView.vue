@@ -16,7 +16,7 @@
 
     <v-window v-model="pestañaSeleccionada">
         <v-window-item :value="0">
-        <v-card height="100vh" style="overflow-y: auto; padding-bottom: 25%;">
+        <v-card height="100dvh" style="overflow-y: auto; padding-bottom: 25%;">
             <div class="content d-flex d-sm-none flex-column align-center ga-16">
                 <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%"/>
                 <DescripcionComponent style="width: 85%;"></DescripcionComponent>
@@ -28,7 +28,7 @@
         </v-card>
         </v-window-item>
         <v-window-item :value="1">
-        <v-card height="100vh" class="d-flex flex-column align-center">
+        <v-card height="100dvh" class="d-flex flex-column align-center">
             <div class="content d-flex d-sm-none flex-column ga-14 ga-sm-16 align-center">
                 <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%"/> 
                 <ControlesBusqueda style="width: 85%;" class="d-flex d-sm-none"></ControlesBusqueda>         
@@ -41,7 +41,7 @@
         </v-card>
         </v-window-item>
         <v-window-item :value="2">
-        <v-card id="resultados-card" width="100vw" height="100vh" >
+        <v-card id="resultados-card" width="100vw" height="100dvh" >
             <div class="resultados-container d-flex d-sm-none flex-column align-center justify-center">
                 <ResultadosBusqueda style="width: 85%;"/>
             </div>
