@@ -17,7 +17,7 @@
 import ControlesBusqueda from './ControlesBusqueda.vue';
 import ResultadosBusqueda from './ResultadosBusqueda.vue';
 </script>
-<style>
+<style scoped>
 #hojas {
     width: 65%;
     height: 85%;

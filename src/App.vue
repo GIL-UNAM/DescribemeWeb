@@ -1,9 +1,13 @@
 <template>
   <v-app id="v-app">
     <v-main>
-      <div id="container">
+      <div id="desktop" class="d-none d-sm-none d-md-flex">
+        <div id="gradient"></div>
         <div id="background"></div>
         <LibroDiccionario></LibroDiccionario>
+      </div>
+      <div id="mobile" class="d-sm-flex d-md-none d-lg-none d-xl-none">
+        <MobileView></MobileView>
       </div>
       <v-dialog v-model="errorDialog" absolute max-width="600px">
           <v-alert
@@ -20,6 +24,7 @@
 
 <script setup lang="ts">
 import LibroDiccionario from './components/LibroDiccionario.vue';
+import MobileView from './components/MobileView.vue';
 
 import { useUIStore } from '@/stores/UIStore';
 import { storeToRefs } from 'pinia';
@@ -40,16 +45,21 @@ onMounted(() => {
 html, body, #v-app{
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(to right bottom, #003d79, #c027c8);
+  overflow: hidden;
 }
 
-#container {
-    width: 100%;
-    height: 100%;
+#desktop {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    background-image: linear-gradient(to right bottom, #003d79, #c027c8);
+}
+
+#mobile {
+  width: 100vw;
+  height: 100vh;
 }
 
 #background {
@@ -58,5 +68,9 @@ html, body, #v-app{
     position: absolute;
     background-image: url(./assets/Fondo_Web.png);
     opacity: 0.02;
+}
+
+#content {
+  margin-top: 10%;
 }
 </style>

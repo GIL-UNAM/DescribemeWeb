@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ControlesBusqueda: typeof import('./src/components/ControlesBusqueda.vue')['default']
     LibroDiccionario: typeof import('./src/components/LibroDiccionario.vue')['default']
+    MobileView: typeof import('./src/components/MobileView.vue')['default']
     ResultadosBusqueda: typeof import('./src/components/ResultadosBusqueda.vue')['default']
   }
 }

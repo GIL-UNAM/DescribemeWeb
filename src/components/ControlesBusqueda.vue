@@ -24,11 +24,17 @@
             rounded
         >Buscar</v-btn>
         <v-btn 
-            class="buscar d-xl-none" 
+            class="buscar d-none d-sm-none d-md-flex d-xl-none" 
             size="small" 
             color="primary" 
             @click="validateForm" 
             rounded
+        >Buscar</v-btn>
+        <v-btn 
+            class="d-md-none d-lg-none d-xl-none"  
+            color="primary" 
+            @click="validateForm" 
+            style="width: 100%;"
         >Buscar</v-btn>
     </v-form>
 </template>
@@ -36,8 +42,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useAPIStore } from '@/stores/APIStore';
+import { useUIStore } from '@/stores/UIStore';
+import { storeToRefs } from 'pinia';
 
 const APIStore = useAPIStore();
+const UIStore = useUIStore();
+
+const { pestañaSeleccionada } = storeToRefs(UIStore);
 
 onMounted(() => APIStore.getDictionaries());
 
@@ -58,6 +69,7 @@ async function validateForm() {
     const { valid } = await controlesBusqueda.value.validate();
 
     if (valid) {
+        pestañaSeleccionada.value = 2
         APIStore.getResults(diccionarioSeleccionado.value as string, descripcion.value as string)
     }
 }

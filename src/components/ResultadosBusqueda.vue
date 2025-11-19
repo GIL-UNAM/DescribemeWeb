@@ -13,19 +13,21 @@
             size="40"
         ></v-progress-circular>
     </div>
-    <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4">
-        <div id="palabraPrincipal" class="d-flex flex-column ga-lg-2 ga-md-0">
-            <h2 class="text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
-            <h6 class="text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
+    <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4 ga-10">
+        <div id="palabraPrincipal" class="d-flex flex-column ga-2 ga-lg-2 ga-md-0">
+            <h2 class="text-h3 text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
+            <h6 class="text-subtitle-1 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
         </div>
-        <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1">
-            <h6 class="text-lg-h6 text-md-subtitle-2 text-grey-darken-1">Otras opciones: </h6>
+        <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1 ga-4">
+            <h6 class="text-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Otras opciones: </h6>
             <v-container id="palabrasRestantes">
                 <v-row>
                     <v-col 
                         v-for="resultado in APIStore.palabrasRestantes" 
                         lg="4" 
                         md="6"
+                        sm="4"
+                        cols="4"
                     >
                         <v-chip 
                             color="primary" 
@@ -43,7 +45,7 @@
             </v-container>
         </div>
     </div>
-    <div v-else-if="errorBusqueda" class="texto">
+    <div v-else-if="errorBusqueda">
         <h5 class="text-lg-h5 text-md-subtitle-2 text-error">
             Lo sentimos, la búsqueda no arrojó ningún resultado:
             <br>
@@ -51,10 +53,13 @@
             {{ errorBusqueda }}
         </h5>
     </div>
-    <div id="instrucciones" class="texto" v-else>
-        <h5 class="text-lg-h5 text-md-subtitle-2">
+    <div id="instrucciones" v-else>
+        <h5 class="text-lg-h5 text-md-subtitle-2 d-none d-sm-none d-md-flex texto-desktop">
             Selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.
         </h5>
+        <h3 class="text-lg-h5 text-md-subtitle-2 d-md-none d-lg-none d-xl- none texto-mobile">
+            En la pestaña "Buscar", selecciona un diccionario y describe con claridad el concepto, como si lo explicaras a alguien que no conoce la palabra. Evita frases sueltas o ejemplos.
+        </h3>
     </div>
 </template>
 
@@ -70,9 +75,19 @@ const { fetching, resultados, errorBusqueda } = storeToRefs(APIStore);
 </script>
 
 <style>
-.texto {
+.texto-desktop {
     width: 65%;
     text-align: center;
+}
+
+.texto-mobile {
+    width: 85%;
+    text-align: center;
+}
+
+#instrucciones {
+    display: flex;
+    justify-content: center;
 }
 
 #resultados {
