@@ -35,6 +35,16 @@ const UIStore = useUIStore();
 const { errorDialog, errorMessage } = storeToRefs(UIStore);
 
 onMounted(() => {
+    const updateVh = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    updateVh();
+    window.addEventListener("resize", updateVh);
+
     window.addEventListener('offline', () => {
         errorDialog.value = true;
         errorMessage.value = "No te encuentras conectado a internet. Descríbeme necesita conexión a internet para fucionar."
@@ -43,14 +53,14 @@ onMounted(() => {
 </script>
 <style>
 html, body, #v-app{
-  height: 100vh;
+  height: calc(var(--vh) * 100);
   width: 100vw;
   overflow: hidden;
 }
 
 #desktop {
     width: 100vw;
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,18 +69,14 @@ html, body, #v-app{
 
 #mobile {
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
 }
 
 #background {
     width: 100vw;
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     position: absolute;
     background-image: url(./assets/Fondo_Web.png);
     opacity: 0.02;
-}
-
-#content {
-  margin-top: 10%;
 }
 </style>

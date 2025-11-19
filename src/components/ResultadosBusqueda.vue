@@ -1,5 +1,5 @@
 <template>
-    <div v-if="fetching">
+    <div v-if="fetching && !resultados" class="progress">
         <v-progress-circular 
             color="primary" 
             class="d-lg-flex d-md-none d-sm-none d-none" 
@@ -16,7 +16,7 @@
     <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4 ga-10">
         <div id="palabraPrincipal" class="d-flex flex-column ga-2 ga-lg-2 ga-md-0">
             <h2 class="text-h3 text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
-            <h6 class="text-subtitle-1 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
+            <h6 class="text-subtitle-1 text-sm-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Similitud: {{ resultados[0]?.score }}</h6>
         </div>
         <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1 ga-4">
             <h6 class="text-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Otras opciones: </h6>
@@ -26,27 +26,27 @@
                         v-for="resultado in APIStore.palabrasRestantes" 
                         lg="4" 
                         md="6"
-                        sm="4"
+                        sm="3"
                         cols="4"
                     >
                         <v-chip 
                             color="primary" 
                             variant="elevated" 
                             size="small" 
-                            class="d-xl-none"
+                            class="d-xl-none d-sm-none d-md-inline-flex"
                         >{{ resultado.palabra }}</v-chip>
                         <v-chip 
                             color="primary" 
                             variant="elevated" 
-                            class="d-xl-inline-flex d-lg-none d-md-none d-sm-none d-none"
+                            class="d-xl-inline-flex d-lg-none d-md-none d-sm-inline-flex d-none"
                         >{{ resultado.palabra }}</v-chip>
                     </v-col>
                 </v-row>
             </v-container>
         </div>
     </div>
-    <div v-else-if="errorBusqueda">
-        <h5 class="text-lg-h5 text-md-subtitle-2 text-error">
+    <div v-else-if="errorBusqueda" id="error-div">
+        <h5 class="text-lg-h5 text-md-subtitle-2 text-sm-h6 text-h6 text-error">
             Lo sentimos, la búsqueda no arrojó ningún resultado:
             <br>
             <br>
@@ -86,8 +86,11 @@ const { fetching, resultados, errorBusqueda } = storeToRefs(APIStore);
 }
 
 #instrucciones {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #resultados {
@@ -95,5 +98,18 @@ const { fetching, resultados, errorBusqueda } = storeToRefs(APIStore);
     /*display: flex;
     flex-direction: column;
     row-gap: 2rem;*/
+}
+
+.progress {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#error-div {
+    width: 65%;
+    text-align: center;
 }
 </style>

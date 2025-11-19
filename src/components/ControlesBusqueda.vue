@@ -1,5 +1,5 @@
 <template>
-    <v-form ref="controlesBusqueda" id="controles">
+    <v-form ref="controlesBusqueda" id="controles" class="d-flex flex-column ga-sm-2">
         <v-autocomplete 
             variant="solo" 
             label="Selecciona un diccionario" 
