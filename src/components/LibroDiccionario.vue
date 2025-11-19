@@ -1,9 +1,9 @@
 <template>
     <div id="hojas">
         <div id="HojaIzquierda" class="hoja">
-            <img src="../assets/DescribeMe_Final.png" width="65%"/>
+            <img src="../assets/DescribeMe_Final.png" width="65%" alt="Logotipo de Desacríbeme"/>
             <ControlesBusqueda />
-            <v-img src="../assets/gil.jpg" id="logo_gil" />
+            <v-img src="../assets/gil.jpg" id="logo_gil" alt="Logotipo del GIL"/>
         </div>
         <div id="HojaDerecha" class="hoja">
             <ResultadosBusqueda />

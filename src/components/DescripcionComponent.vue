@@ -10,7 +10,7 @@
                 Describe lo que buscas
             </li>
             <p class="text-body text-sm-subtitle-1">
-                Puedes escribir una definición, una frase, una característica o incluso una idea general.
+                Puedes escribir una definición o una idea general.
             </p class="text-body text-sm-subtitle-1">
             <br>
             <li class="font-weight-bold text-sm-h6">

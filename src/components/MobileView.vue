@@ -18,11 +18,11 @@
         <v-window-item :value="0">
         <v-card height="100dvh" style="overflow-y: auto; padding-bottom: 25%;">
             <div class="content d-flex d-sm-none flex-column align-center ga-16">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%"/>
+                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%" alt="Logotipo de Desacríbeme"/>
                 <DescripcionComponent style="width: 85%;"></DescripcionComponent>
             </div>
             <div class="content d-none d-sm-flex flex-column align-center ga-16">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%"/>
+                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%" alt="Logotipo de Desacríbeme"/>
                 <DescripcionComponent style="width: 70%;"></DescripcionComponent>
             </div>
         </v-card>
@@ -30,14 +30,14 @@
         <v-window-item :value="1">
         <v-card height="100dvh" class="d-flex flex-column align-center">
             <div class="content d-flex d-sm-none flex-column ga-14 ga-sm-16 align-center">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%"/> 
+                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%" alt="Logotipo de Desacríbeme"/> 
                 <ControlesBusqueda style="width: 85%;" class="d-flex d-sm-none"></ControlesBusqueda>         
             </div>
             <div class="content d-none d-sm-flex flex-column ga-14 ga-sm-16 align-center">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%"/> 
+                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%" alt="Logotipo de Desacríbeme"/> 
                 <ControlesBusqueda style="width: 70%;" class="d-none"></ControlesBusqueda>       
             </div>
-             <v-img src="../assets/gil.jpg" class="logo-gil-mobile"/>
+             <v-img src="../assets/gil.jpg" class="logo-gil-mobile" alt="Logotipo del GIL"/>
         </v-card>
         </v-window-item>
         <v-window-item :value="2">
