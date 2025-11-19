@@ -44,7 +44,7 @@
             <div class="resultados-container d-flex d-sm-none flex-column align-center justify-center">
                 <ResultadosBusqueda style="width: 85%;"/>
             </div>
-            <div class="resultados-container d-none d-sm-flex flex-column align-center justify-center">
+            <div class="resultados-container-sm d-none d-sm-flex flex-column align-center justify-center">
                 <ResultadosBusqueda style="width: 70%;"/>
             </div>
         </v-card>
@@ -71,13 +71,18 @@ const { resultados } = storeToRefs(APIStore);
 onMounted(() => {
   watch(resultados, () => {
         const container = <HTMLElement>document.querySelector(".resultados-container");
+        const containerSmall = <HTMLElement>document.querySelector(".resultados-container-sm");
 
         if (resultados.value) {
             container?.classList.remove("justify-center")
+            containerSmall?.classList.remove("justify-center")
             container.style.paddingTop = "10%";
+            containerSmall.style.paddingTop = "20%";
         } else {
             container?.classList.add("justify-center");
+            containerSmall?.classList.add("justify-center");
             container.style.paddingTop = "0%";
+            containerSmall.style.paddingTop = "0%";
         }
     })  
 })
@@ -91,6 +96,11 @@ onMounted(() => {
 }
 
 .resultados-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.resultados-container-sm {
     width: 100vw;
     height: 100vh;
 }
