@@ -97,13 +97,13 @@ onMounted(() => {
 }
 
 .resultados-container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .resultados-container-sm {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .logo-gil-mobile {
