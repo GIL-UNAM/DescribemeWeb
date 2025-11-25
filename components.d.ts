@@ -11,10 +11,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AcercaDelGIL: typeof import('./src/components/AcercaDelGIL.vue')['default']
+    AgradecimientosComponent: typeof import('./src/components/AgradecimientosComponent.vue')['default']
+    ComoCitar: typeof import('./src/components/ComoCitar.vue')['default']
     ControlesBusqueda: typeof import('./src/components/ControlesBusqueda.vue')['default']
     DescripcionComponent: typeof import('./src/components/DescripcionComponent.vue')['default']
     LibroDiccionario: typeof import('./src/components/LibroDiccionario.vue')['default']
     MobileView: typeof import('./src/components/MobileView.vue')['default']
     ResultadosBusqueda: typeof import('./src/components/ResultadosBusqueda.vue')['default']
+    TerminosDeUso: typeof import('./src/components/TerminosDeUso.vue')['default']
   }
 }

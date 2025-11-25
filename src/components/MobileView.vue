@@ -20,10 +20,18 @@
             <div class="content d-flex d-sm-none flex-column align-center ga-16">
                 <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%" alt="Logotipo de Desacríbeme"/>
                 <DescripcionComponent style="width: 85%;"></DescripcionComponent>
+                <AcercaDelGIL style="width: 85%;"></AcercaDelGIL>
+                <TerminosDeUso style="width: 85%"></TerminosDeUso>
+                <ComoCitar style="width: 85%"></ComoCitar>
+                <AgradecimientosComponent style="width: 85%"></AgradecimientosComponent>
             </div>
             <div class="content d-none d-sm-flex flex-column align-center ga-16">
                 <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%" alt="Logotipo de Desacríbeme"/>
                 <DescripcionComponent style="width: 70%;"></DescripcionComponent>
+                <AcercaDelGIL style="width: 70%;"></AcercaDelGIL>
+                <TerminosDeUso style="width: 70%;"></TerminosDeUso>
+                <ComoCitar style="width: 70%;"></ComoCitar>
+                <AgradecimientosComponent style="width: 70%;"></AgradecimientosComponent>
             </div>
         </v-card>
         </v-window-item>
@@ -62,6 +70,10 @@ import { useUIStore } from '@/stores/UIStore';
 import { useAPIStore } from '@/stores/APIStore';
 import { storeToRefs } from 'pinia';
 import DescripcionComponent from './DescripcionComponent.vue';
+import AcercaDelGIL from './AcercaDelGIL.vue';
+import TerminosDeUso from './TerminosDeUso.vue';
+import ComoCitar from './ComoCitar.vue';
+import AgradecimientosComponent from './AgradecimientosComponent.vue';
 
 const UIStore = useUIStore();
 const APIStore = useAPIStore()

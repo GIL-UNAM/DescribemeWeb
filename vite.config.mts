@@ -60,6 +60,11 @@ export default defineConfig({
             purpose: "any"
           },
           {
+            src: "/icons/180x180.png",
+            sizes: "180x180",
+            type: "image/png",
+          },
+          {
             src: "/icons/152x152.png",
             sizes: "152x152",
             type: "image/png"
