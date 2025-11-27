@@ -74,6 +74,20 @@ html, body, #v-app{
     margin-left: 2%;
 }
 
+
+@media (min-width: 960px) and (max-width: 1280px) {
+  .listas {
+    margin-left: 3%;
+  }
+}
+
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .listas {
+    margin-left: 6%;
+  }
+}
+
 @media (max-width: 600px) {
   .listas {
     margin-left: 8%;
