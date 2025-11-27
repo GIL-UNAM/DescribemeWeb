@@ -13,7 +13,7 @@ type Diccionario = {
 
 type Request = {
     diccionario: string,
-    descripcion: string
+    definicion: string
 }
 
 export const useAPIStore = defineStore("APIStore", {
@@ -32,73 +32,49 @@ export const useAPIStore = defineStore("APIStore", {
         }
     },
     actions: {
-        async getResults(diccionario: string, descripcion: string) {
+        async getResults(diccionario: string, definicion: string) {
             this.resultados = null;
 
             const request: Request = {
                 diccionario,
-                descripcion
+                definicion
             }
 
             this.fetching = true;
-            /*const response = await fetch('/api/v1/buscar', {
-                method: "POST",
-                body: JSON.stringify(request),
-                headers: { 'Content-Type': 'application/json' }
 
-            }) 
-            this.resultados = response.resultados
+            try {
+                const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/buscar', {
+                    method: "POST",
+                    body: JSON.stringify(request),
+                    headers: { 'Content-Type': 'application/json' }
+
+                });
             
-            if (response.error) {
-                this.errorBusqueda = response.error;
-            }*/            
+                const data = await response.json();
 
-            setTimeout(() => {
-                if (descripcion == "error") {
-                    this.errorBusqueda = "No hubo coincidencias con el término";
+                if (!data.ok) {
+                    this.errorBusqueda = data.error;
                 } else {
-                    this.resultados = [
-                        {palabra: "Araña", score: 0.85},
-                        {palabra: "Pulpo", score: 0.78},
-                        {palabra: "Calamar", score: 0.75},
-                        {palabra: "Arácnido", score: 0.65},
-                        {palabra: "Tarántula", score: 0.58},
-                        {palabra: "Micróptero", score: 0.55},
-                        {palabra: "Crustáceo", score: 0.49},
-                        {palabra: "Insecto", score: 0.40},
-                        {palabra: "Nautilo", score: 0.37},
-                        {palabra: "Calíptero", score: 0.23}, 
-                    ]
+                    this.resultados = data.resultados
                 }
-                this.fetching = false;
-            }, 3000);
 
+                this.fetching = false;
+                
+            } catch (error) {
+                console.error(error);
+            }
         },
         async getDictionaries() {
-            /*const response = await fetch('/api/v1/diccionarios');
-            this.diccionarios = response.diccionarios;
+            try {
+                const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/diccionarios');
+            
+                const data = await response.json();
 
-            if (response.error) {
-                console.error(response.error)
-            }*/
-
-            this.diccionarios = [
-                {
-                    nombre: 'Diccionario de sexualidad mexicana',
-                    nodos: 5000,
-                    aristas: 25000 
-                },
-                {
-                    nombre: 'Diccionario de animales',
-                    nodos: 5000,
-                    aristas: 25000 
-                },
-                {
-                    nombre: 'Diccionario de leyes mexicanas',
-                    nodos: 5000,
-                    aristas: 25000 
-                },
-            ]
+                this.diccionarios = data.diccionarios;
+                
+            } catch (error) {
+                console.error(error);   
+            }
         }
     }
 });

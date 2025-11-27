@@ -15,8 +15,8 @@
     </div>
     <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-lg-8 ga-md-4 ga-10">
         <div id="palabraPrincipal" class="d-flex flex-column ga-2 ga-lg-2 ga-md-0">
-            <h2 class="text-h3 text-lg-h2 text-md-h4 font-weight-regular">{{ resultados[0]?.palabra }}</h2>
-            <h6 class="text-subtitle-1 text-sm-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Concordancia: {{ resultados[0]!.score * 100 }}%</h6>
+            <h2 class="text-h3 text-lg-h2 text-md-h4 font-weight-regular">{{ palabraCapitalizada }}</h2>
+            <h6 class="text-subtitle-1 text-sm-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Concordancia: {{ Number(resultados[0]!.score.toFixed(2)) * 100 }}%</h6>
         </div>
         <div id="opciones" class="d-flex flex-column ga-lg-4 ga-md-1 ga-4">
             <h6 class="text-h6 text-lg-h6 text-md-subtitle-2 text-grey-darken-1 font-weight-medium">Otras opciones: </h6>
@@ -34,12 +34,12 @@
                             variant="elevated" 
                             size="small" 
                             class="d-xl-none d-sm-none d-md-inline-flex"
-                        >{{ resultado.palabra }}</v-chip>
+                        >{{ resultado.palabra.charAt(0).toUpperCase() + resultado.palabra.slice(1) }}</v-chip>
                         <v-chip 
                             color="primary" 
                             variant="elevated" 
                             class="d-xl-inline-flex d-lg-none d-md-none d-sm-inline-flex d-none"
-                        >{{ resultado.palabra }}</v-chip>
+                        >{{ resultado.palabra.charAt(0).toUpperCase() + resultado.palabra.slice(1) }}</v-chip>
                     </v-col>
                 </v-row>
             </v-container>
@@ -72,6 +72,18 @@ import { computed } from 'vue';
 const APIStore = useAPIStore();
 
 const { fetching, resultados, errorBusqueda } = storeToRefs(APIStore);
+
+const palabraCapitalizada = computed(() => {
+    if (resultados.value) {
+        const palabra = resultados.value[0]?.palabra;
+
+        if (!palabra) return "";
+
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+    } else {
+        return "";
+    }
+});
 
 </script>
 
