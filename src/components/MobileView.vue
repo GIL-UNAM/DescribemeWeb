@@ -1,5 +1,10 @@
 <template>
-    <v-bottom-navigation mandatory color="primary" v-model="pestañaSeleccionada" grow>
+    <v-bottom-navigation 
+        color="primary" 
+        grow 
+        mandatory 
+        v-model="pestañaSeleccionada"
+    >
         <v-btn>
             <v-icon>mdi-information</v-icon>
             <span>Información</span>
@@ -16,9 +21,17 @@
 
     <v-window v-model="pestañaSeleccionada">
         <v-window-item :value="0">
-        <v-card height="100dvh" style="overflow-y: auto; padding-bottom: 25%;">
+        <v-card 
+            height="100dvh" 
+            style="overflow-y: auto; padding-bottom: 25%;"
+        >
             <div class="content d-flex d-sm-none flex-column align-center ga-16">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%" alt="Logotipo de Desacríbeme"/>
+                <img 
+                    alt="Logotipo de Desacríbeme" 
+                    src="../assets/DescribeMe_Final.png" 
+                    width="85%" 
+                    class="logo-describeme-mobile"
+                />
                 <DescripcionComponent style="width: 85%;"></DescripcionComponent>
                 <AcercaDelGIL style="width: 85%;"></AcercaDelGIL>
                 <TerminosDeUso style="width: 85%"></TerminosDeUso>
@@ -26,7 +39,12 @@
                 <AgradecimientosComponent style="width: 85%"></AgradecimientosComponent>
             </div>
             <div class="content d-none d-sm-flex flex-column align-center ga-16">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%" alt="Logotipo de Desacríbeme"/>
+                <img 
+                    alt="Logotipo de Desacríbeme" 
+                    src="../assets/DescribeMe_Final.png" 
+                    width="70%" 
+                    class="logo-describeme-mobile"
+                />
                 <DescripcionComponent style="width: 70%;"></DescripcionComponent>
                 <AcercaDelGIL style="width: 70%;"></AcercaDelGIL>
                 <TerminosDeUso style="width: 70%;"></TerminosDeUso>
@@ -38,14 +56,28 @@
         <v-window-item :value="1">
         <v-card height="100dvh" class="d-flex flex-column align-center">
             <div class="content d-flex d-sm-none flex-column ga-14 ga-sm-16 align-center">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="85%" alt="Logotipo de Desacríbeme"/> 
+                <img 
+                    alt="Logotipo de Desacríbeme" 
+                    src="../assets/DescribeMe_Final.png" 
+                    width="85%" 
+                    class="logo-describeme-mobile"
+                /> 
                 <ControlesBusqueda style="width: 85%;" class="d-flex d-sm-none"></ControlesBusqueda>         
             </div>
             <div class="content d-none d-sm-flex flex-column ga-14 ga-sm-16 align-center">
-                <img class="logo-describeme-mobile" src="../assets/DescribeMe_Final.png" width="70%" alt="Logotipo de Desacríbeme"/> 
+                <img 
+                    alt="Logotipo de Desacríbeme" 
+                    src="../assets/DescribeMe_Final.png" 
+                    width="70%" 
+                    class="logo-describeme-mobile"
+                /> 
                 <ControlesBusqueda style="width: 70%;" class="d-none"></ControlesBusqueda>       
             </div>
-             <v-img src="../assets/gil.jpg" class="logo-gil-mobile" alt="Logotipo del GIL"/>
+             <v-img 
+                alt="Logotipo del GIL" 
+                src="../assets/gil.jpg" 
+                class="logo-gil-mobile"
+            />
         </v-card>
         </v-window-item>
         <v-window-item :value="2">
@@ -62,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, watch, watchEffect } from 'vue';
+import { onMounted, watch } from 'vue';
 import ControlesBusqueda from './ControlesBusqueda.vue';
 import ResultadosBusqueda from './ResultadosBusqueda.vue';
 
@@ -108,6 +140,11 @@ onMounted(() => {
   margin-top: 10%;
 }
 
+.logo-gil-mobile {
+    width: 15%;
+    height: 15%;
+}
+
 .resultados-container {
     width: 100%;
     height: 100%;
@@ -116,11 +153,6 @@ onMounted(() => {
 .resultados-container-sm {
     width: 100%;
     height: 100%;
-}
-
-.logo-gil-mobile {
-    width: 15%;
-    height: 15%;
 }
 
 #card-controles {

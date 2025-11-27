@@ -1,21 +1,20 @@
 <template>
   <v-app id="v-app">
     <v-main>
-      <div id="desktop" class="d-none d-sm-none d-md-flex">
-        <div id="gradient"></div>
-        <div id="background"></div>
+      <div id="escritorio" class="d-none d-sm-none d-md-flex">
+        <div id="fondo-curvas"></div>
         <LibroDiccionario></LibroDiccionario>
       </div>
       <div id="mobile" class="d-sm-flex d-md-none d-lg-none d-xl-none">
         <MobileView></MobileView>
       </div>
-      <v-dialog v-model="errorDialog" absolute max-width="600px">
+      <v-dialog v-model="dialogoError" absolute max-width="600px">
           <v-alert
+            :text="mensajeError"
             title="Error"
             type="error"
-            :text="errorMessage"
             closable
-            @click:close="errorDialog = false"
+            @click:close="dialogoError = false"
           ></v-alert>
       </v-dialog>
     </v-main>
@@ -32,35 +31,24 @@ import { onMounted } from 'vue';
 
 const UIStore = useUIStore();
 
-const { errorDialog, errorMessage } = storeToRefs(UIStore);
+const { dialogoError, mensajeError } = storeToRefs(UIStore);
 
 onMounted(() => {
-    const updateVh = () => {
-      document.documentElement.style.setProperty(
-        "--vh",
-        `${window.innerHeight * 0.01}px`
-      );
-    };
-
-    updateVh();
-    window.addEventListener("resize", updateVh);
-
     window.addEventListener('offline', () => {
-        errorDialog.value = true;
-        errorMessage.value = "No te encuentras conectado a internet. Descríbeme necesita conexión a internet para fucionar."
+        dialogoError.value = true;
+        mensajeError.value = "No te encuentras conectado a internet. Descríbeme necesita conexión a internet para fucionar."
     })
 })
 </script>
 <style>
-/*calc(var(--vh) * 100) */
 
 html, body, #v-app{
-  height: 100dvh;
   width: 100vw;
+  height: 100dvh;
   overflow: hidden;
 }
 
-#desktop {
+#escritorio {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -69,16 +57,20 @@ html, body, #v-app{
     background-image: linear-gradient(to right bottom, #003d79, #c027c8);
 }
 
-#mobile {
-  width: 100vw;
-  height: 100dvh;
-}
-
-#background {
+#fondo-curvas {
     width: 100vw;
     height: 100vh;
     position: absolute;
     background-image: url(./assets/Fondo_Web.png);
     opacity: 0.02;
+}
+
+#mobile {
+  width: 100vw;
+  height: 100dvh;
+}
+
+.listas {
+    margin-left: 2%;
 }
 </style>

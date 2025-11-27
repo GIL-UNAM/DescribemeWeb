@@ -1,29 +1,52 @@
 <template>
     <div id="hojas">
-        <div id="HojaIzquierda" class="hoja">
-            <img src="../assets/DescribeMe_Final.png" width="65%" alt="Logotipo de Desacríbeme"/>
+        <div id="hoja-izquierda" class="hoja">
+            <img 
+                alt="Logotipo de Descríbeme" 
+                src="../assets/DescribeMe_Final.png" 
+                width="65%"
+            />
             <ControlesBusqueda />
-            <v-img src="../assets/gil.jpg" id="logo_gil" alt="Logotipo del GIL" @click="infoDialog = true" />
-            <v-dialog v-model="infoDialog" transition="dialog-bottom-transition" fullscreen>
+            <v-img 
+                id="logo-gil" 
+                alt="Logotipo del GIL" 
+                src="../assets/gil.jpg" 
+                @click="dialogInformacion = true" 
+            />
+            <v-dialog 
+                fullscreen 
+                transition="dialog-bottom-transition" 
+                v-model="dialogInformacion"
+            >
                 <v-card>
                     <v-toolbar color="primary" extended>
-                        <v-btn icon="mdi-close" @click="infoDialog = false"></v-btn>
+                        <v-btn 
+                            icon="mdi-close" 
+                            @click="dialogInformacion = false"
+                        ></v-btn>
 
                         <v-toolbar-title text="Información"></v-toolbar-title>
 
                         <template v-slot:extension>
                             <v-tabs grow v-model="tabs">
-                                <v-tab text="¿Qué es un diccionario inverso?" :value="1"></v-tab>
+                                <v-tab 
+                                    text="¿Qué es un diccionario inverso?" 
+                                    :value="1"
+                                ></v-tab>
                                 <v-tab text="Acerca del GIL" :value="2"></v-tab>
                                 <v-tab text="Términos de uso" :value="3"></v-tab>
-                                <v-tab text="Cómo citar el diccionario" :value="4"></v-tab>
+                                <v-tab 
+                                    text="Cómo citar el diccionario" 
+                                    :value="4"
+                                ></v-tab>
                                 <v-tab text="Agradecimientos" :value="5"></v-tab>
                             </v-tabs>
                         </template>
                     </v-toolbar>
+
                     <v-divider></v-divider>
 
-                    <v-tabs-window v-model="tabs" style="overflow-y: auto;">
+                    <v-tabs-window style="overflow-y: auto;" v-model="tabs">
                         <v-tabs-window-item :value="1">
                             <v-sheet>
                                 <DescripcionComponent class="ma-6"></DescripcionComponent>
@@ -53,11 +76,11 @@
                 </v-card>
             </v-dialog>
         </div>
-        <div id="HojaDerecha" class="hoja">
+        <div id="hoja-derecha" class="hoja">
             <ResultadosBusqueda />
         </div>
         <div id="separador"></div>
-        <img src="../assets/Listón.png" alt="liston" id="liston">
+        <img id="liston" alt="liston" src="../assets/Listón.png">
     </div>
     <div id="fondo"></div>
 </template>
@@ -71,11 +94,13 @@ import TerminosDeUso from './TerminosDeUso.vue';
 import ComoCitar from './ComoCitar.vue';
 import AgradecimientosComponent from './AgradecimientosComponent.vue';
 
-const infoDialog = ref<boolean>(false);
+const dialogInformacion = ref<boolean>(false);
 const tabs = ref<number>(1)
 
 </script>
+
 <style>
+
 #hojas {
     width: 65%;
     height: 85%;
@@ -84,14 +109,10 @@ const tabs = ref<number>(1)
     justify-content: center;
 }
 
-#fondo {
-    background: #FFFFFF66;
-    height: 80%;
-    width: 68%;
-    z-index: 1;
-    border-radius: 25px;
-    translate: 0 5%;
-    position: absolute;
+#hoja-izquierda {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    row-gap: 10%;
 }
 
 .hoja {
@@ -105,6 +126,19 @@ const tabs = ref<number>(1)
     justify-content: center;
 }
 
+#logo-gil {
+    position: absolute;
+    width: 8%;
+    height: 8%;
+    top: 85%;
+    cursor: pointer;
+}
+
+#hoja-derecha {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 #separador {
     width: 1px;
     height: 100%;
@@ -112,17 +146,6 @@ const tabs = ref<number>(1)
     background: #00000040;
     z-index: 3;
     box-shadow: 0px 0px 15px 0px;
-}
-
-#HojaIzquierda {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    row-gap: 10%;
-}
-
-#HojaDerecha {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
 }
 
 #liston {
@@ -134,73 +157,22 @@ const tabs = ref<number>(1)
     align-self: flex-start;
 }
 
+#fondo {
+    background: #FFFFFF66;
+    position: absolute;
+    height: 80%;
+    width: 68%;
+    z-index: 1;
+    border-radius: 25px;
+    translate: 0 5%;
+}
+
 #listaDescripcion {
     width: 95%;
 }
 
-/*
-#controles {
-    width: 65%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10%;
-}
-
-#logo_gil {
-    width: 10%;
-    height: 10%;
-}
-
-#logo_describeme {
-    width: 65%;
-    z-index: 3;
-}
-*/
-
-/*
-#logo_gil {
-    position: absolute;
-    width: 6%;
-    height: 6%;
-    top: 85%;
-}
-
-#logo_describeme {
-    top: 15%;
-    position: absolute;
-    width: 33%; 
-    z-index: 3;
-}
-
-#controles {
-    position: absolute;
-    top: 37%;
-    height: 100%;
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5%;
-}
-*/
-
 #logo_describeme {
     width: 65%;
 }
-
-#logo_gil {
-    position: absolute;
-    width: 8%;
-    height: 8%;
-    top: 85%;
-    cursor: pointer;
-}
-
-/*#opciones {
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
-    justify-content: start;
-}*/
 
 </style>

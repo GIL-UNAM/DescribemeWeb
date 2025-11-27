@@ -4,13 +4,13 @@
         <p class="text-body text-sm-subtitle-1">
             Agradecemos el patrocinio del CONACyT a través del proyecto: 
         </p>
-        <ul class="ordered-list">
+        <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
                 CONACYT CF-2023-G-64 (Grafos conceptuales para la contrucción de diccionarios inversos en áreas de especialidad)
             </li>
         </ul>
         <p class="text-body text-sm-subtitle-1"> Agradecemos también la programación del algorithmo en a:</p>
-        <ul class="ordered-list">
+        <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
                 Regina Arahí Guerra Hernández
             </li>
@@ -19,7 +19,7 @@
             </li>
         </ul>
         <p class="text-body text-sm-subtitle-1">Agradecemos en el diseño del sitio web a:</p>
-        <ul class="ordered-list">
+        <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
                 Cesar Alejandro Cabrera Peralta
             </li>
@@ -28,18 +28,13 @@
             </li>
         </ul>
         <p class="text-body text-sm-subtitle-1">Y en el área de desarrollo web a:</p>
-        <ul class="ordered-list">
+        <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
                 Cesar Alejandro Cabrera Peralta
             </li>
             <li class="font-weight-bold text-sm-subtitle-1">
-                Julián Solorzano
+                Julián Solorzano Soto
             </li>
         </ul>
     </div>
 </template>
-<style>
-.ordered-list {
-    margin-left: 2%;
-}
-</style>

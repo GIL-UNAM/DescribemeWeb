@@ -1,40 +1,40 @@
 <template>
-    <v-form ref="controlesBusqueda" id="controles" class="d-flex flex-column ga-sm-2">
-        <v-autocomplete 
-            variant="solo" 
-            label="Selecciona un diccionario" 
-            density="comfortable" 
-            :items="APIStore.listaDeDiccionarios" 
-            :rules="rulesSeleccionarDiccionario" 
+    <v-form id="controles" ref="controlesBusqueda" class="d-flex flex-column ga-sm-2">
+        <v-autocomplete
             clearable
+            density="comfortable"
+            :items="APIStore.listaDeDiccionarios"
+            label="Selecciona un diccionario"    
+            :rules="rulesSeleccionarDiccionario"
+            variant="solo"
             v-model="diccionarioSeleccionado"
         ></v-autocomplete>
-        <v-textarea 
-            variant="solo" 
-            label="Ingresa una descripción" 
-            density="comfortable"
-            :rules="rulesDescripcion" 
+        <v-textarea
             clearable
+            density="comfortable" 
+            label="Ingresa una descripción" 
+            :rules="rulesDescripcion"
+            variant="solo"
             v-model="descripcion"
         ></v-textarea>
-        <v-btn 
-            class="buscar d-xl-flex d-lg-none d-md-none d-sm-none d-none" 
-            color="primary" 
-            @click="validateForm" 
+        <v-btn  
+            color="primary"  
             rounded
+            @click="validarForma"
+            class="buscar d-none d-sm-none d-md-none d-lg-none d-xl-flex"
         >Buscar</v-btn>
         <v-btn 
-            class="buscar d-none d-sm-none d-md-flex d-xl-none" 
             size="small" 
-            color="primary" 
-            @click="validateForm" 
+            color="primary"
             rounded
+            @click="validarForma" 
+            class="buscar d-none d-sm-none d-md-flex d-xl-none" 
         >Buscar</v-btn>
         <v-btn 
-            class="d-md-none d-lg-none d-xl-none"  
             color="primary" 
-            @click="validateForm" 
             style="width: 100%;"
+            @click="validarForma" 
+            class="d-md-none d-lg-none d-xl-none"  
         >Buscar</v-btn>
     </v-form>
 </template>
@@ -50,12 +50,12 @@ const UIStore = useUIStore();
 
 const { pestañaSeleccionada } = storeToRefs(UIStore);
 
-onMounted(() => APIStore.getDictionaries());
+onMounted(() => APIStore.obtenerDiccionarios());
 
 const diccionarioSeleccionado = ref<null | string>(null);
 const descripcion = ref<null | string>(null);
 
-const controlesBusqueda = ref() // typear esto
+const controlesBusqueda = ref();
 
 const rulesSeleccionarDiccionario = ref([
     (value: string) => !!value || "Debes seleccionar un diccionario"
@@ -65,12 +65,12 @@ const rulesDescripcion = ref([
     (value: string) => (!!value || value == ' ') || "Debes ingresar una descripción"
 ])
 
-async function validateForm() {
+async function validarForma() {
     const { valid } = await controlesBusqueda.value.validate();
 
     if (valid) {
         pestañaSeleccionada.value = 2
-        APIStore.getResults(diccionarioSeleccionado.value as string, descripcion.value as string)
+        APIStore.obtenerResultados(diccionarioSeleccionado.value as string, descripcion.value as string)
     }
 }
 </script>

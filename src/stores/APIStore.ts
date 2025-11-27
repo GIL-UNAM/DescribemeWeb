@@ -16,6 +16,20 @@ type Request = {
     definicion: string
 }
 
+type RespuestaBusqueda = {
+    ok: boolean,
+    diccionario: string,
+    definicion: string,
+    resultados: Resultado[],
+    error: string
+}
+
+type RespuestaDiccionarios = {
+    ok: boolean,
+    diccionarios: Diccionario[],
+    error: string
+}
+
 export const useAPIStore = defineStore("APIStore", {
     state: () => ({
         diccionarios: [] as Diccionario[],
@@ -32,7 +46,7 @@ export const useAPIStore = defineStore("APIStore", {
         }
     },
     actions: {
-        async getResults(diccionario: string, definicion: string) {
+        async obtenerResultados(diccionario: string, definicion: string) {
             this.resultados = null;
 
             const request: Request = {
@@ -50,7 +64,7 @@ export const useAPIStore = defineStore("APIStore", {
 
                 });
             
-                const data = await response.json();
+                const data: RespuestaBusqueda = await response.json();
 
                 if (!data.ok) {
                     this.errorBusqueda = data.error;
@@ -58,20 +72,23 @@ export const useAPIStore = defineStore("APIStore", {
                     this.resultados = data.resultados
                 }
 
-                this.fetching = false;
-                
             } catch (error) {
                 console.error(error);
             }
+
+            this.fetching = false;
         },
-        async getDictionaries() {
+        async obtenerDiccionarios() {
             try {
                 const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/diccionarios');
             
-                const data = await response.json();
+                const data: RespuestaDiccionarios = await response.json();
 
-                this.diccionarios = data.diccionarios;
-                
+                if (!data.ok) {
+                    console.error(data.error);  
+                } else {
+                    this.diccionarios = data.diccionarios;
+                }
             } catch (error) {
                 console.error(error);   
             }

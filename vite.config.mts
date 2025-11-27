@@ -157,26 +157,3 @@ export default defineConfig({
     port: 3000,
   }
 })
-
-/*
- registerType: 'autoUpdate',
-      manifest: {
-        name: 'My Vue PWA',
-        short_name: 'VuePWA',
-        theme_color: '#42b983',
-        icons: [
-          {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
-        
-public/icons/
-*/

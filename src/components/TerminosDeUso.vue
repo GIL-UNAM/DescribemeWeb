@@ -9,25 +9,25 @@
         <p class="text-body text-sm-subtitle-1">
              El Instituto de Ingeniería (IINGEN) de la Universidad Nacional Autónoma de México (UNAM) pone gratuitamente a disposición de los usuarios de Descríbeme contenidos propios o acceso hacia otras páginas de internet pero:
         </p>
-        <ol type="a" class="ordered-list">
-            <li class="font-weight-bold text-sm-subtitle-1">
+        <ol type="a" class="listas">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 puede suspenderlo o actualizarlo en cualquier momento sin previo aviso,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 puede modificar los contenidos o cualquier otro elemento.
             </li>
         </ol>
         <p class="text-body text-sm-subtitle-1">
             El usuario de Descríbeme asume la obligación de usarlo conforme a la buena fe y especialmente reconoce la prohibición de:
         </p>
-        <ol type="a" class="ordered-list">
-            <li class="font-weight-bold text-sm-subtitle-1">
+        <ol type="a" class="listas">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 usar maliciosamente los recursos técnicos disponibles para impedir que otros usuarios puedan usarlo,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 obtener información o contenidos de Descríbeme por otro medio que no sea la visualización directa de las páginas a través de la pulsación directa por el usuario de los enlaces existentes en las páginas.
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 reproducir o comunicar públicamente cualesquiera contenidos de Descríbeme sin contar con autorización expresa para ello.
             </li>
         </ol>
@@ -73,20 +73,20 @@
         <p class="text-body text-sm-subtitle-1">
             El IINGEN no garantiza, ni expresa ni implícitamente, los contenidos incorporados en las páginas de Descríbeme, ni los elementos funcionales del mismo. En especial, no se garantiza que:
         </p>
-        <ol type="a" class="ordered-list">
-            <li class="font-weight-bold text-sm-subtitle-1">
+        <ol type="a" class="listas">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 El contenido sea de un determinado nivel o calidad científica o sirva para determinados propósitos, o esté exento de errores,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 Los elementos funcionales del sitio no tengan interrupciones o carezcan de errores,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 Los errores serán corregidos,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 El servidor de este sitio, o los de los enlaces (links) por medio de los cuales se hace disponible este sitio, estén libres de virus o de otros componentes dañinos,
             </li>
-            <li class="font-weight-bold text-sm-subtitle-1">
+            <li class="text-sm-subtitle-1 font-weight-bold">
                 El resultado de su visita y el de las actividades desarrolladas como consecuencia de su visita, sean completamente satisfactorios.
             </li>
         </ol>
@@ -98,8 +98,3 @@
         </p>
     </div>
 </template>
-<style>
-.ordered-list {
-    margin-left: 2%;
-}
-</style>
