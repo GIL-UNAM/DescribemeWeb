@@ -5,7 +5,7 @@
             Un diccionario inverso es una herramienta que te ayuda a encontrar una palabra a partir de su definición, idea o descripción, incluso cuando no recuerdas cómo se llama exactamente. En lugar de buscar el significado de una palabra, haces el proceso al revés: escribes lo que quieres expresar y el diccionario te sugiere los términos que mejor coinciden.
         </p>
         <p class="text-sm-h6 font-weight-bold ">¿Cómo funciona?</p>
-        <ol id="lista-descripcion">
+        <ol class="listas">
             <li class="text-sm-h6 font-weight-bold ">
                 Describe lo que buscas
             </li>
@@ -32,12 +32,3 @@
         </p>
     </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style>
-#lista-descripcion {
-    width: 85%; 
-    align-self: center;
-}
-</style>

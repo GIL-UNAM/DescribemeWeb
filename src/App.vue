@@ -73,4 +73,10 @@ html, body, #v-app{
 .listas {
     margin-left: 2%;
 }
+
+@media (max-width: 600px) {
+  .listas {
+    margin-left: 8%;
+  }
+}
 </style>
