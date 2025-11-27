@@ -1,5 +1,5 @@
 <template>
-    <div v-if="fetching && !resultados" class="progress">
+    <div v-if="fetching" class="progress">
         <v-progress-circular 
             color="primary"  
             indeterminate 
@@ -13,7 +13,15 @@
             class="d-lg-none" 
         ></v-progress-circular>
     </div>
-    <div v-else-if="resultados" id="resultados" class="d-flex flex-column ga-10 ga-md-4 ga-lg-8">
+    <div v-else-if="errorBusqueda" id="error-div">
+        <h5 class="text-h6 text-sm-h6 text-md-subtitle-2 text-lg-h5 text-error">
+            Lo sentimos, la búsqueda no arrojó ningún resultado:
+            <br>
+            <br>
+            {{ errorBusqueda }}
+        </h5>
+    </div>
+    <div v-else-if="resultados && !fetching" id="resultados" class="d-flex flex-column ga-10 ga-md-4 ga-lg-8">
         <div class="d-flex flex-column ga-2 ga-md-0 ga-lg-2">
             <h2 class="text-h3 text-md-h4 text-lg-h2 font-weight-regular">{{ palabraCapitalizada }}</h2>
             <h6 class="text-subtitle-1 text-sm-h6 text-md-subtitle-2 text-lg-h6 text-grey-darken-1 font-weight-medium">Concordancia: {{ Number(resultados[0]!.score.toFixed(2)) * 100 }}%</h6>
@@ -44,14 +52,6 @@
                 </v-row>
             </v-container>
         </div>
-    </div>
-    <div v-else-if="errorBusqueda" id="error-div">
-        <h5 class="text-h6 text-sm-h6 text-md-subtitle-2 text-lg-h5 text-error">
-            Lo sentimos, la búsqueda no arrojó ningún resultado:
-            <br>
-            <br>
-            {{ errorBusqueda }}
-        </h5>
     </div>
     <div id="instrucciones" v-else>
         <h5 class="d-none d-sm-none d-md-flex text-md-subtitle-2 text-lg-h5 texto-desktop">

@@ -48,6 +48,7 @@ export const useAPIStore = defineStore("APIStore", {
     actions: {
         async obtenerResultados(diccionario: string, definicion: string) {
             this.resultados = null;
+            this.errorBusqueda = '';
 
             const request: Request = {
                 diccionario,
@@ -70,6 +71,10 @@ export const useAPIStore = defineStore("APIStore", {
                     this.errorBusqueda = data.error;
                 } else {
                     this.resultados = data.resultados
+
+                    if (this.resultados.length === 0) {
+                        this.errorBusqueda = "No hubo coincidencias con la descripcíon."
+                    }
                 }
 
             } catch (error) {
