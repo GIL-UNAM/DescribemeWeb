@@ -21,7 +21,7 @@
         <p class="text-body text-sm-subtitle-1">Agradecemos en el diseño del sitio web a:</p>
         <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
-                Cesar Alejandro Cabrera Peralta
+                César Alejandro Cabrera Peralta
             </li>
             <li class="font-weight-bold text-sm-subtitle-1">
                 Fabián Perez Santoyo
@@ -30,7 +30,7 @@
         <p class="text-body text-sm-subtitle-1">Y en el área de desarrollo web a:</p>
         <ul class="listas">
             <li class="font-weight-bold text-sm-subtitle-1">
-                Cesar Alejandro Cabrera Peralta
+                César Alejandro Cabrera Peralta
             </li>
             <li class="font-weight-bold text-sm-subtitle-1">
                 Julián Solorzano Soto
