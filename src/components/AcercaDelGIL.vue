@@ -13,5 +13,6 @@
         <p class="text-body text-sm-subtitle-1">
             Puedes contactarnos al correo: gil@iingen.unam.mx 
         </p>
+        <v-img alt="QR del GIL" src="../assets/qr_gil.jpg" max-width="250px" class="elevation-2"></v-img>
     </div>
 </template>
