@@ -39,7 +39,7 @@
                                     text="Cómo citar el diccionario" 
                                     :value="4"
                                 ></v-tab>
-                                <v-tab text="Agradecimientos" :value="5"></v-tab>
+                                <v-tab text="Créditos" :value="5"></v-tab>
                             </v-tabs>
                         </template>
                     </v-toolbar>
@@ -69,7 +69,7 @@
                         </v-tabs-window-item>
                         <v-tabs-window-item :value="5">
                             <v-sheet>
-                                <AgradecimientosComponent class="ma-6"></AgradecimientosComponent>
+                                <CreditosComponent class="ma-6"></CreditosComponent>
                             </v-sheet>
                         </v-tabs-window-item>
                     </v-tabs-window>
@@ -92,7 +92,7 @@ import ResultadosBusqueda from './ResultadosBusqueda.vue';
 import { ref } from 'vue';
 import TerminosDeUso from './TerminosDeUso.vue';
 import ComoCitar from './ComoCitar.vue';
-import AgradecimientosComponent from './AgradecimientosComponent.vue';
+import CreditosComponent from './CreditosComponent.vue';
 
 const dialogInformacion = ref<boolean>(false);
 const tabs = ref<number>(1)

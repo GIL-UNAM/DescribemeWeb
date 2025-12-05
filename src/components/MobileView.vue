@@ -36,7 +36,7 @@
                 <AcercaDelGIL style="width: 85%;"></AcercaDelGIL>
                 <TerminosDeUso style="width: 85%"></TerminosDeUso>
                 <ComoCitar style="width: 85%"></ComoCitar>
-                <AgradecimientosComponent style="width: 85%"></AgradecimientosComponent>
+                <CreditosComponent style="width: 85%"></CreditosComponent>
             </div>
             <div class="content d-none d-sm-flex flex-column align-center ga-16">
                 <img 
@@ -49,7 +49,7 @@
                 <AcercaDelGIL style="width: 70%;"></AcercaDelGIL>
                 <TerminosDeUso style="width: 70%;"></TerminosDeUso>
                 <ComoCitar style="width: 70%;"></ComoCitar>
-                <AgradecimientosComponent style="width: 70%;"></AgradecimientosComponent>
+                <CreditosComponent style="width: 70%;"></CreditosComponent>
             </div>
         </v-card>
         </v-window-item>
@@ -105,7 +105,8 @@ import DescripcionComponent from './DescripcionComponent.vue';
 import AcercaDelGIL from './AcercaDelGIL.vue';
 import TerminosDeUso from './TerminosDeUso.vue';
 import ComoCitar from './ComoCitar.vue';
-import AgradecimientosComponent from './AgradecimientosComponent.vue';
+import CreeditosComponent from './CreditosComponent.vue';
+import CreditosComponent from './CreditosComponent.vue';
 
 const UIStore = useUIStore();
 const APIStore = useAPIStore()
