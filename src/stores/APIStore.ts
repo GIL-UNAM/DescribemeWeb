@@ -58,7 +58,7 @@ export const useAPIStore = defineStore("APIStore", {
             this.fetching = true;
 
             try {
-                const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/buscar', {
+                const response: Response = await fetch('http://www.geco.unam.mx/dicinv/buscar', {
                     method: "POST",
                     body: JSON.stringify(request),
                     headers: { 'Content-Type': 'application/json' }
@@ -85,7 +85,7 @@ export const useAPIStore = defineStore("APIStore", {
         },
         async obtenerDiccionarios() {
             try {
-                const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/diccionarios');
+                const response: Response = await fetch('http://www.geco.unam.mx/dicinv/diccionarios');
             
                 const data: RespuestaDiccionarios = await response.json();
 
