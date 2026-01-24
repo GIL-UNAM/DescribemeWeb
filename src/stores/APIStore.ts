@@ -57,7 +57,7 @@ export const useAPIStore = defineStore("APIStore", {
 
             this.fetching = true;
 
-            const apiBuscar: string = 'https://www.geco.unam.mx/dicinv/buscar'
+            const apiBuscar: string = 'http://www.geco.unam.mx/dicinv/buscar'
             const proxyURL: string = `https://api.allorigins.win/get?url=${encodeURIComponent(apiBuscar)}`
 
             try {
@@ -70,9 +70,9 @@ export const useAPIStore = defineStore("APIStore", {
 
                 const data = await response.json()
             
-                const finalData: RespuestaBusqueda = await data.contents;
+                const finalData: RespuestaBusqueda = JSON.parse(data.contents);
 
-                if (!finalData.ok) {
+                if (!data.ok) {
                     this.errorBusqueda = finalData.error;
                 } else {
                     this.resultados = finalData.resultados;
@@ -90,16 +90,16 @@ export const useAPIStore = defineStore("APIStore", {
         },
         async obtenerDiccionarios() {
             try {
-                const apiDiccionarios: string = 'https://www.geco.unam.mx/dicinv/diccionarios'
+                const apiDiccionarios: string = 'http://www.geco.unam.mx/dicinv/diccionarios'
                 const proxyURL: string = `https://api.allorigins.win/get?url=${encodeURIComponent(apiDiccionarios)}`
                 
                 const response: Response = await fetch(proxyURL);
             
                 const data = await response.json();
 
-                const finalData: RespuestaDiccionarios = data.contents;
+                const finalData: RespuestaDiccionarios = JSON.parse(data.contents);
 
-                if (!finalData.ok) {
+                if (!data.ok) {
                     console.error(finalData.error);  
                 } else {
                     this.diccionarios = finalData.diccionarios;
