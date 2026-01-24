@@ -93,7 +93,7 @@ export const useAPIStore = defineStore("APIStore", {
                 const apiDiccionarios: string = 'https://www.geco.unam.mx/dicinv/diccionarios'
                 const proxyURL: string = `https://api.allorigins.win/get?url=${encodeURIComponent(apiDiccionarios)}`
                 
-                const response: Response = await fetch('https://www.geco.unam.mx/dicinv/diccionarios');
+                const response: Response = await fetch(proxyURL);
             
                 const data = await response.json();
 
