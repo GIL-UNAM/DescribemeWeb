@@ -99,6 +99,8 @@ export const useAPIStore = defineStore("APIStore", {
 
                 const finalData: RespuestaDiccionarios = JSON.parse(data.contents);
 
+                console.log("Contents: ", data.contents);
+
                 if (!data.ok) {
                     console.error(finalData.error);  
                 } else {
