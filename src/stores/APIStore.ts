@@ -57,20 +57,23 @@ export const useAPIStore = defineStore("APIStore", {
 
             this.fetching = true;
 
+            const URLGECOBuscar = 'http://www.geco.unam.mx/dicinv/api/buscar'
+
             try {
-                const response: Response = await fetch('http://www.geco.unam.mx/dicinv/api/buscar', {
+                const response: Response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URLGECOBuscar)}`, {
                     method: "POST",
                     body: JSON.stringify(request),
                     headers: { 'Content-Type': 'application/json' }
 
                 });
             
-                const data: RespuestaBusqueda = await response.json();
+                const data = await response.json();
+                const finalData: RespuestaBusqueda = JSON.parse(data.contents)                
 
-                if (!data.ok) {
-                    this.errorBusqueda = data.error;
+                if (!finalData.ok) {
+                    this.errorBusqueda = finalData.error;
                 } else {
-                    this.resultados = data.resultados
+                    this.resultados = finalData.resultados
 
                     if (this.resultados.length === 0) {
                         this.errorBusqueda = "No hubo coincidencias con la descripcíon."
@@ -84,15 +87,18 @@ export const useAPIStore = defineStore("APIStore", {
             this.fetching = false;
         },
         async obtenerDiccionarios() {
-            try {
-                const response: Response = await fetch('http://www.geco.unam.mx/dicinv/api/diccionarios');
-            
-                const data: RespuestaDiccionarios = await response.json();
+            const URLGECODiccionarios = 'http://www.geco.unam.mx/dicinv/api/diccionarios'
 
-                if (!data.ok) {
-                    console.error(data.error);  
+            try {
+                const response: Response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URLGECODiccionarios)}`);
+            
+                const data = await response.json();
+                const finalData: RespuestaDiccionarios = JSON.parse(data.contents)
+
+                if (!finalData.ok) {
+                    console.error(finalData.error);  
                 } else {
-                    this.diccionarios = data.diccionarios;
+                    this.diccionarios = finalData.diccionarios;
                 }
             } catch (error) {
                 console.error(error);   
