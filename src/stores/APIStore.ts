@@ -7,8 +7,8 @@ type Resultado = {
 
 type Diccionario = {
     nombre: string,
-    nodos: number,
-    aristas: number
+    archivo_graphml: string,
+    archivo_json: string
 }
 
 type Request = {
@@ -26,8 +26,7 @@ type RespuestaBusqueda = {
 
 type RespuestaDiccionarios = {
     ok: boolean,
-    diccionarios: Diccionario[],
-    error: string
+    data: Diccionario[],
 }
 
 export const useAPIStore = defineStore("APIStore", {
@@ -68,7 +67,9 @@ export const useAPIStore = defineStore("APIStore", {
                 });
             
                 const data = await response.json();
-                const finalData: RespuestaBusqueda = JSON.parse(data.contents)                
+                const finalData: RespuestaBusqueda = JSON.parse(data.contents)
+                
+                console.log("Reasultados de búsqueda: ", finalData);
 
                 if (!finalData.ok) {
                     this.errorBusqueda = finalData.error;
@@ -96,9 +97,9 @@ export const useAPIStore = defineStore("APIStore", {
                 const finalData: RespuestaDiccionarios = JSON.parse(data.contents)
 
                 if (!finalData.ok) {
-                    console.error(finalData.error);  
+                    console.error("No se pudieron cargar los diccionarios");  
                 } else {
-                    this.diccionarios = finalData.diccionarios;
+                    this.diccionarios = finalData.data;
                 }
             } catch (error) {
                 console.error(error);   
