@@ -59,22 +59,21 @@ export const useAPIStore = defineStore("APIStore", {
             const URLGECOBuscar = 'http://www.geco.unam.mx/dicinv/api/v1/buscar'
 
             try {
-                const response: Response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URLGECOBuscar)}`, {
+                const response: Response = await fetch('https://cors.isomorphic-git.org/http://www.geco.unam.mx/dicinv/api/v1/buscar', {
                     method: "POST",
                     body: JSON.stringify(request),
                     headers: { 'Content-Type': 'application/json' }
 
                 });
             
-                const data = await response.json();
-                const finalData: RespuestaBusqueda = JSON.parse(data.contents)
+                const data: RespuestaBusqueda = await response.json();
                 
-                console.log("Reasultados de búsqueda: ", finalData);
+                console.log("Reasultados de búsqueda: ", data);
 
-                if (!finalData.ok) {
-                    this.errorBusqueda = finalData.error;
+                if (!data.ok) {
+                    this.errorBusqueda = data.error;
                 } else {
-                    this.resultados = finalData.resultados
+                    this.resultados = data.resultados
 
                     if (this.resultados.length === 0) {
                         this.errorBusqueda = "No hubo coincidencias con la descripcíon."
