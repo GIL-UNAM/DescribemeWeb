@@ -56,7 +56,7 @@ export const useAPIStore = defineStore("APIStore", {
 
             this.fetching = true;
 
-            const URLGECOBuscar = 'http://www.geco.unam.mx/dicinv/api/buscar'
+            const URLGECOBuscar = 'http://www.geco.unam.mx/dicinv/api/v1/buscar'
 
             try {
                 const response: Response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URLGECOBuscar)}`, {
