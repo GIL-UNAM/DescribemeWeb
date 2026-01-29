@@ -59,7 +59,7 @@ export const useAPIStore = defineStore("APIStore", {
             const URLGECOBuscar = 'http://www.geco.unam.mx/dicinv/api/v1/buscar'
 
             try {
-                const response: Response = await fetch('https://cors.isomorphic-git.org/http://www.geco.unam.mx/dicinv/api/v1/buscar', {
+                const response: Response = await fetch('https://devsys.iingen.unam.mx/dicinv/api/v1/buscar', {
                     method: "POST",
                     body: JSON.stringify(request),
                     headers: { 'Content-Type': 'application/json' }
@@ -87,10 +87,9 @@ export const useAPIStore = defineStore("APIStore", {
             this.fetching = false;
         },
         async obtenerDiccionarios() {
-            const URLGECODiccionarios = 'http://www.geco.unam.mx/dicinv/api/diccionarios'
 
             try {
-                const response: Response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URLGECODiccionarios)}`);
+                const response: Response = await fetch(`https://devsys.iingen.unam.mx/dicinv/api/v1/diccionarios`);
             
                 const data = await response.json();
                 const finalData: RespuestaDiccionarios = JSON.parse(data.contents)
